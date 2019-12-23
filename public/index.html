@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Пример веб-страницы</title>
+ </head>
+ <body>
+  <h1>Заголовок</h1>
+  <p>Первый абзац.</p>
+  <p>Второй абзац.</p>
+  <button onclick="myak()">CLICK</button>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    const myak = () => {
+      socket2.emit('test', Date.now()+' hallo from my server');
+    }
+    const socket1 = io('/');
+    const socket2 = io('https://testing.kostyk.repl.co/');
+
+    socket1.on('connect', () => {
+      console.log(socket1.id);
+    });
+
+    socket2.on('connect', () => {
+      console.log(socket2.id);
+    });
+  </script>
+ </body>
+</html>
